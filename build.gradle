@@ -1,0 +1,32 @@
+plugins {
+    id 'groovy'
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    implementation 'org.apache.groovy:groovy:4.0.22'
+    testImplementation platform('org.spockframework:spock-bom:2.3-groovy-4.0')
+    testImplementation 'org.spockframework:spock-core'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty 'impl', System.getProperty('impl', 'referencia')
+    outputs.upToDateWhen { false }
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+        exceptionFormat 'full'
+        showStandardStreams false
+    }
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\n${result.resultType}  —  ${result.testCount} testes, ${result.failedTestCount} falha(s)\n"
+        }
+    }
+}
