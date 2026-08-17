@@ -99,6 +99,7 @@ A avaliação contra as implementações defeituosas (Mutantes) será rodada pel
 4. Faça commit para seu repositório contendo as alterações em `MinhaSuite<SeuNome>Spec.groovy`. Qualquer alteração em `src/main/` ou em `DesafioSpec.groovy` invalida a entrega.
 5. Avise o instrutor, assim ele pode validar sua entrega contra os mutantes e te informar o resultado
 6. O instrutor te retorna o resultado *"sua suíte matou N de 11"* — sem dizer quais
+7. Se mutantes sobreviveram, raciocíne o que pode ter ocorrido e faça mais testes para serem validados
 
 Saber que sobraram sete e não saber quais te obriga a fazer a pergunta certa: *que tipo de coisa eu ainda não estou testando?*
 
