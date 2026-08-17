@@ -15,7 +15,7 @@ if $GRADLE test -Dimpl=referencia --console=plain --rerun-tasks; then
   ENTREGA VÁLIDA.
   Sua suíte está verde contra a referência.
 
-  Antes de abrir o PR, três perguntas:
+  Mas antes de seguir, três perguntas:
     1. Cada teste tem um nome que descreve o COMPORTAMENTO esperado?
     2. Existe algum `then:` sem asserção de verdade?
     3. Dá para matar o mesmo tanto com menos testes?
