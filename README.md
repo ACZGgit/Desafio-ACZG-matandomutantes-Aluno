@@ -63,17 +63,16 @@ Isso é a especificação inteira. Não há regra escondida.
 
 ---
 
-## Regras do jogo
+## Instruções para solucionar o problema
 
-1. Entregue **apenas** o arquivo `MinhaSuite<SeuNome>Spec.groovy`, estendendo `DesafioSpec`.
-2. Exercite **somente** o contrato público `calcular(...)`. Nada de reflexão, nada de acessar internals.
-3. Todo bloco `then:`/`expect:` precisa conter ao menos uma asserção real. Suíte sem asserção não pontua.
+1. Clone esse repositório ou faça um forque
+2. A entrega efetiva será **apenas** o arquivo `MinhaSuite<SeuNome>Spec.groovy`, estendendo `DesafioSpec`. Preste atenção, seu nome deve ser inserido no nome do arquivo, de acordo com a intrução
+2. Utilize **somente** o contrato público `calcular(...)`. Nada de reflexão, nada de acessar internals.
+3. Não altere o código da calculadora, sua tarefa não é refatorar ele, é apenas elaborar os testes.
+3. Todo bloco `then:`/`expect:` precisa conter ao menos uma asserção real. Suíte sem asserção não são válidas.
 4. Sua suíte precisa passar **100%** contra a implementação de referência. Uma única falha ali zera a entrega — um teste que acusa código correto é pior que teste nenhum.
 
-### Pontuação
 
-- **Nota** = implementações defeituosas reprovadas ÷ 11
-- **Desempate** = menor número de testes. Cobertura não se mede em quantidade.
 
 ---
 
@@ -115,33 +114,23 @@ Requer JDK 17+ e Gradle 8.x. Se o wrapper não vier no clone, gere com `gradle w
 ./verificar.sh        # sanity check antes de entregar
 ```
 
-`verificar.sh` roda sua suíte contra a referência e falha se qualquer teste ficar vermelho. A avaliação contra as implementações defeituosas roda do nosso lado.
+`verificar.sh` roda sua suíte contra a referência (implementação correta que você tem aceso) e falha se qualquer teste ficar vermelho. 
+A avaliação contra as implementações defeituosas (Mutantes) será rodada pelo intrutor quando for avaliar.
 
 ---
 
 ## Como entregar
 
 1. Renomeie `MinhaSuiteSpec.groovy` para `MinhaSuite<SeuNome>Spec.groovy` (e a classe junto).
-2. Apague os testes de exemplo, ou fique com eles — não valem ponto de qualquer forma.
+2. Apague os testes de exemplo, ou fique com eles — não faz diferença
 3. `./verificar.sh` precisa passar.
-4. Abra um PR contendo **só esse arquivo**. Qualquer alteração em `src/main/` ou em `DesafioSpec.groovy` invalida a entrega.
+4. Faça commit para seu repositório contendo as alterações em `MinhaSuite<SeuNome>Spec.groovy`. Qualquer alteração em `src/main/` ou em `DesafioSpec.groovy` invalida a entrega.
+5. Avise o instrutor, assim ele pode validar sua entrega contra os mutantes e te informar o resultado
+6. O instrutor te retorna o resultado *"sua suíte matou N de 11"* — sem dizer quais
+
+Saber que sobraram sete e não saber quais te obriga a fazer a pergunta certa: *que tipo de coisa eu ainda não estou testando?*
 
 ---
-
-## Cronograma
-
-| Quando | O quê |
-|---|---|
-| Segunda | Release do desafio |
-| Quarta, 18h | Entrega da **rodada 1** (PR) |
-| Quinta | Devolutiva: *"sua suíte matou N de 11"* — sem dizer quais |
-| Sexta, 18h | Entrega da **rodada 2** |
-| Segunda seguinte | Debrief coletivo com o mapa completo |
-
-A rodada 2 é onde o desafio realmente acontece. Saber que sobraram sete e não saber quais te obriga a fazer a pergunta certa: *que tipo de coisa eu ainda não estou testando?*
-
----
-
 ## Uma dica, e só uma
 
-Cada regra acima é uma afirmação sobre um caso. Defeitos raramente vivem dentro de um caso — vivem nas beiradas entre eles.
+Cada regra acima é uma afirmação sobre um caso. Defeitos raramente vivem dentro de um caso — vivem nas beiradas (edges) entre eles.
