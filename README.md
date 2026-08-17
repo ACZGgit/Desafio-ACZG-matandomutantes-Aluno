@@ -76,6 +76,35 @@ Isso é a especificação inteira. Não há regra escondida.
 
 ---
 
+
+## Como rodar
+
+Requer JDK 17+ e Gradle 8.x. Se o wrapper não vier no clone, gere com `gradle wrapper`.
+
+```bash
+./gradlew test        # desenvolve aqui
+./verificar.sh        # sanity check antes de entregar
+```
+
+`verificar.sh` roda sua suíte contra a referência (implementação correta que você tem aceso) e falha se qualquer teste ficar vermelho.
+A avaliação contra as implementações defeituosas (Mutantes) será rodada pelo intrutor quando for avaliar.
+
+---
+
+## Como entregar
+
+1. Renomeie `MinhaSuiteSpec.groovy` para `MinhaSuite<SeuNome>Spec.groovy` (e a classe junto).
+2. Apague os testes de exemplo, ou fique com eles — não faz diferença
+3. `./verificar.sh` precisa passar.
+4. Faça commit para seu repositório contendo as alterações em `MinhaSuite<SeuNome>Spec.groovy`. Qualquer alteração em `src/main/` ou em `DesafioSpec.groovy` invalida a entrega.
+5. Avise o instrutor, assim ele pode validar sua entrega contra os mutantes e te informar o resultado
+6. O instrutor te retorna o resultado *"sua suíte matou N de 11"* — sem dizer quais
+
+Saber que sobraram sete e não saber quais te obriga a fazer a pergunta certa: *que tipo de coisa eu ainda não estou testando?*
+
+---
+
+
 ## O repositório
 
 ```
@@ -102,33 +131,6 @@ solicitacao(glosas: [glosa('80.00'), glosa('20.00')])
 ```
 
 Nunca instancie uma implementação diretamente. Use sempre o campo `calculadora` — é ele que a avaliação troca por baixo dos panos.
-
----
-
-## Como rodar
-
-Requer JDK 17+ e Gradle 8.x. Se o wrapper não vier no clone, gere com `gradle wrapper`.
-
-```bash
-./gradlew test        # desenvolve aqui
-./verificar.sh        # sanity check antes de entregar
-```
-
-`verificar.sh` roda sua suíte contra a referência (implementação correta que você tem aceso) e falha se qualquer teste ficar vermelho. 
-A avaliação contra as implementações defeituosas (Mutantes) será rodada pelo intrutor quando for avaliar.
-
----
-
-## Como entregar
-
-1. Renomeie `MinhaSuiteSpec.groovy` para `MinhaSuite<SeuNome>Spec.groovy` (e a classe junto).
-2. Apague os testes de exemplo, ou fique com eles — não faz diferença
-3. `./verificar.sh` precisa passar.
-4. Faça commit para seu repositório contendo as alterações em `MinhaSuite<SeuNome>Spec.groovy`. Qualquer alteração em `src/main/` ou em `DesafioSpec.groovy` invalida a entrega.
-5. Avise o instrutor, assim ele pode validar sua entrega contra os mutantes e te informar o resultado
-6. O instrutor te retorna o resultado *"sua suíte matou N de 11"* — sem dizer quais
-
-Saber que sobraram sete e não saber quais te obriga a fazer a pergunta certa: *que tipo de coisa eu ainda não estou testando?*
 
 ---
 ## Uma dica, e só uma
